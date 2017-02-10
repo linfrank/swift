@@ -141,7 +141,7 @@ public class SwiftGenerator
         final Document document = context.getDocument();
         final Header header = document.getHeader();
 
-        String javaPackage = context.getJavaPackage();
+        String javaPackage = swiftGeneratorConfig.getPackagePrefix() + context.getJavaPackage();
 
         // Add a Constants type so that the Constants visitor can render is.
         typeRegistry.add(new SwiftJavaType(thriftNamespace, "Constants", "Constants", javaPackage));

@@ -63,7 +63,8 @@ public class Main
                 .defaultPackage(cliConfig.defaultPackage)
                 .generateIncludedCode(cliConfig.generateIncludedCode)
                 .codeFlavor(cliConfig.generateBeans ? "java-regular" : "java-immutable")
-                .includePathsRelativeToFile(cliConfig.includePathsRelativeToFile);
+                .includePathsRelativeToFile(cliConfig.includePathsRelativeToFile)
+                .packagePrefix(cliConfig.packagePrefix);
 
         for (SwiftGeneratorTweak tweak : cliConfig.tweaks) {
             configBuilder.addTweak(tweak);

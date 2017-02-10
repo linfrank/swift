@@ -86,4 +86,10 @@ public class SwiftGeneratorCommandLineConfig
             description = "Include paths are relative to the file in which they are contained"
     )
     public boolean includePathsRelativeToFile = false;
+
+    @Parameter(
+            names = "-package_prefix",
+            description = "Adding a prefix to all the generated java package namespace"
+    )
+    public String packagePrefix = "";
 }
