@@ -34,6 +34,7 @@ public class SwiftGeneratorConfig
     private final boolean generateIncludedCode;
     private final String codeFlavor;
     private final boolean includePathsRelativeToFile;
+    private final String packagePrefix;
 
     private SwiftGeneratorConfig(
             final URI inputBase,
@@ -43,7 +44,8 @@ public class SwiftGeneratorConfig
             final Set<SwiftGeneratorTweak> generatorTweaks,
             final boolean generateIncludedCode,
             final String codeFlavor,
-            final boolean includePathsRelativeToFile)
+            final boolean includePathsRelativeToFile,
+            final String packagePrefix)
     {
         this.inputBase = inputBase;
         this.includeSearchPaths = includeSearchPaths;
@@ -54,6 +56,7 @@ public class SwiftGeneratorConfig
         this.generateIncludedCode = generateIncludedCode;
         this.codeFlavor = codeFlavor;
         this.includePathsRelativeToFile = includePathsRelativeToFile;
+        this.packagePrefix = packagePrefix;
     }
 
     public static Builder builder()
@@ -134,6 +137,14 @@ public class SwiftGeneratorConfig
         return includePathsRelativeToFile;
     }
 
+    /**
+     *
+     */
+    public String getPackagePrefix()
+    {
+        return packagePrefix;
+    }
+
     public static class Builder
     {
         private URI inputBase = null;
@@ -145,6 +156,7 @@ public class SwiftGeneratorConfig
         private boolean generateIncludedCode = false;
         private String codeFlavor = null;
         private boolean includePathsRelativeToFile = false;
+        private String packagePrefix = "";
 
         private Builder()
         {
@@ -170,7 +182,8 @@ public class SwiftGeneratorConfig
                     generatorTweaks,
                     generateIncludedCode,
                     codeFlavor,
-                    includePathsRelativeToFile);
+                    includePathsRelativeToFile,
+                    packagePrefix);
         }
 
         public Builder inputBase(final URI inputBase)
@@ -224,6 +237,12 @@ public class SwiftGeneratorConfig
         public Builder includePathsRelativeToFile(final boolean includePathsRelativeToFile)
         {
             this.includePathsRelativeToFile = includePathsRelativeToFile;
+            return this;
+        }
+
+        public Builder packagePrefix(final String packagePrefix)
+        {
+            this.packagePrefix = packagePrefix;
             return this;
         }
     }
